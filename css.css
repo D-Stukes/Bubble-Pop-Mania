@@ -1,0 +1,144 @@
+
+/*cursor: url(hatPinBubblePopper-Cursor.png), auto;
+*/
+.bodyStart{
+  background-image: url("images/bubbleBkgrd3blue.jpg");
+  background-size: cover;
+}
+
+.bodyBub{
+  background-image: url("images/bubbleBkgrd.jpg");
+  background-size: contain;
+  margin: 0
+  padding 0;
+  overflow: hidden;
+}
+h1{
+  font-size: 40pt;
+  font-weight: bolder;
+  text-align: center;
+}
+.gameIntro {
+  text-align: center;
+}
+.instructions, .startBtn{
+  font-size: 20pt;
+  font-weight: bold;
+  text-align: center;
+}
+.startBtn {
+  font-weight: bold;
+  color: yellow;
+}
+.startBtn2 {
+  font-weight: bold;
+  color: black;
+  font-size: 15pt;
+  height: 30px;
+  width: 85px;
+}
+.inputTxt {
+  height: 30px;
+  width:150px;
+  font-size: 20pt;
+  font-weight: bold;
+  text-align: center;
+}
+.bubble {
+  height: 75px;
+  width: 75px;
+  background-color: black;
+  /*#75FFC0*/;
+  border-radius: 50%;
+  margin: 0;
+  top: 0;
+  left: 0;
+  background-image: url("images/bubbleBlueClear1.jpeg");
+  background-size: cover;
+  /*background: radial-gradient(circle at 50px 50px, white, #66b0ff, white, gray);*/
+  opacity: .8;
+  position: relative;
+  animation: bubFloat 25s infinite ;
+  transform-origin: top;
+  border-bottom: 5px solid pink;
+  border-top: 5 px solid blue;
+
+}
+
+.bubble2 {
+  height: 75px;
+  width: 75px;
+  background-color: black;
+  /*#75FFC0*/;
+  border-radius: 50%;
+  margin: 0;
+  top: 0;
+  left: 0;
+  background-image: url("images/bubbleBlueClear1.jpeg");
+  background-size: cover;
+  /*background: radial-gradient(circle at 50px 50px, white, #66b0ff, white, gray);*/
+  opacity: .7;
+  position: relative;
+  animation: bubFloat2 40s infinite ;
+  transform-origin: top;
+  border-bottom: 5px solid pink;
+  border-top: 5 px solid blue;
+
+}
+
+@keyframes bubFloat {
+    0%       { transform:; translatey(-10px)  }
+    100%     { transform: rotate(650deg)  translatey(800px) }
+}
+@keyframes bubFloatw {
+    0%       { transform:; translatey(0px)  }
+    100%     { transform: rotate(600deg)  translatey(1000px) }
+}
+
+.splash{
+  background-image: url("images/splash1.jpeg");
+  height: 75px;
+  width: 75px;
+  position: relative;
+ /* border-radius: 50%;*/
+  animation: bubFloat 15s infinite alternate;
+  background-size: cover;
+}
+
+.bubbleOut {
+  transform: scale(1.5, 0.5); /* Equal to scaleX(2) scaleY(0.5) */
+  transform-origin: center;
+  background-color: #66b0ff;
+  display: relative;
+  background: radial-gradient(circle at 125px 125px, white, gray);
+  margin: 0;
+}
+.scoreTally{
+  width: 100px;
+  height: 50px;
+  border: 3px solid black;
+  color: yellow;
+  font-size: 16pt;
+  padding: 3px;
+}
+.timer {
+  top: 0;
+  left: 600px;
+  width: 100px;
+  height: 50px;
+  border: 3px solid black;
+  color: yellow;
+  font-size: 16pt;
+  padding: 3px;
+}
+.player1{
+  top: 0;
+  left: 400px;
+  width: 150px;
+  height: 50px;
+  border: 3px solid black;
+  color: yellow;
+  font-size: 16pt;
+  padding: 3px;
+}
+
