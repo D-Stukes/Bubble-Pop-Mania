@@ -1,21 +1,29 @@
 $(document).ready(function(){
-
     let playerName = $('.inputTxt');
+    console.log(playerName);
     let playNow = $('.startBtn2');
     let newBody = $('body');
     let bubbleCount = 0;
-    $('.gameIntro').show();
         //change background from Landing Page to First Game Level
-    $('.player1').text(playerName);
+    // $('.player1').text(playerName);
+    // console.log(playerName)
     // $('.scoreTally').hide();
+       $('.gameStart').hide();
+
     playNow.on('click', function(){
+
+      $('.player1').val(playerName);
+    console.log(playerName)
         $('.gameIntro').hide();
         $('.scoreTally').show();
-        $('.scoreTally').text('Bubbles Popped: ' + ' Current Score: ');
+        $('.gameStart').show();
+        $('.scoreTally').text('BUBBLES POPPED:_______' + '    CURRENT SCORE:______');
+
             //sets a timing interval of 1 second, counting down from 60 to display a game timer
         let i = 60;
         let time = setInterval(function() {
-            // selects timer div and adds value of i to it
+
+            // selects timer div and adds value of i, which will count down to 0.
           $('.timer').text("GAME TIMER: " + i);
           i--;
           if(i === 0) {
@@ -46,7 +54,7 @@ $(document).ready(function(){
     bub.addClass('splash');
     setTimeout(function(){bub.removeClass('bubble splash')},200);
         //displays BubbleCount, and Score
-    $('.scoreTally').text('Bubbles Popped: ' + bubbleCount + ' Current Score: ' + 10 * bubbleCount);
+    $('.scoreTally').text('BUBBLES POPPED:____' + bubbleCount + ' CURRENT SCORE:____' + 10 * bubbleCount);
 
     });
   }
