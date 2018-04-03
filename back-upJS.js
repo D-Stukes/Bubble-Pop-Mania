@@ -1,68 +1,60 @@
 $(document).ready(function(){
     let playerName = $('.inputTxt');
+    console.log(playerName);
     let playNow = $('.startBtn2');
     let newBody = $('body');
     let bubbleCount = 0;
-    let score = 0;
-     $('.replay').on('click', function(){
-        window.location.reload();
-      });
+    let score;
+
         //change background from Landing Page to First Game Level
         // $('.player1').text(playerName);
         // console.log(playerName)
         // $('.scoreTally').hide();
     $('.gameStart').hide();
     $('.gameEnd').hide();
-    playNow.on('click', function(){
 
-        //sending Player's name to the div Player1 to display
-      $('.player1').text(playerName.val());
-        // console.log(playerName.val())
-      $('.gameIntro').hide();
-      $('.gameEnd').hide();
-      $('.scoreTally').show();
-      $('.gameStart').show();
-      $('.scoreTally').text('BUBBLES POPPED:_______' + '    CURRENT SCORE:______');
+    playNow.on('click', function(){
+            //sending Player's name to the div Player1 to display
+        $('.player1').text(playerName.val());
+            // console.log(playerName.val())
+        $('.gameIntro').hide();
+        $('.scoreTally').show();
+        $('.gameStart').show();
+        $('.scoreTally').text('BUBBLES POPPED:_______' + '    CURRENT SCORE:______');
 
         //removing intro background, adding background scene of first level to the body - "newbody"
-      newBody.addClass('bodyBub');
+        newBody.addClass('bodyBub');
         setTimeout(function(){newBody.removeClass('bodyStart')},500);
 
         // calling function to create 100 bubbles
-        blowNewBubbles();
+        // blowNewBubbles();
             for(let y = 1; y <= 100; y++){
             blowNewBubbles();
             }
 
+
+     let i = 60;
         let time = setInterval(function() {
             // selects timer div and adds value of i, which will count down to 0.
           $('.timer').text("GAME TIMER: " + i);
           i--;
-          if( (score === 200) && (i >= 0) ) {
-            console.log('game over you won')
+          if( (score === 200) && (i !== 0) ) {
 
-            //removing first level background, adding background scene of end  to the body - "newbody"
-            newBody.addClass('bodyEndFirstGame');
-            setTimeout(function(){newBody.removeClass('bodybub')},500);
-            // $('.gameEnd').show();
-            $('.congrats').show();
-            $('.youLost').hide();
-            $('.replay').show();
-            clearInterval(time);
-          } else if( (i < 0) && (score < 200) ) {
-            console.log('game over you lost')
-            //removing first level background, adding background scene of end  to the body - "newbody"
-            newBody.addClass('bodyEndFirstGame');
-
-            setTimeout(function(){newBody.removeClass('bodybub')},500);
-            $('.gameEnd').show();
-            $('.youLost').show();
-            $('.congrats').hide();
-            $('.replay').show();
-            clearInterval(time);
+        //removing first level background, adding background scene of end  to the body - "newbody"
+        newBody.addClass('bodyEndFirstGame');
+        setTimeout(function(){newBody.removeClass('bodybub')},500);
+        // $('.congrats').show();
+        // $('.replay').show();
+          clearInterval(time);
           }
-        }, 1000);
-
+          else if( (i===0) && (score < 200) ) {
+        //removing first level background, adding background scene of end  to the body - "newbody"
+        newBody.addClass('bodyEndFirstGame');
+        setTimeout(function(){newBody.removeClass('bodybub')},500);
+          }
+         }, 1000);
+        // $('.congrats').show();
+        // $('.replay').show();
     });
 
         //create bubble divs, each with bubble class and a random position, then append to body.
@@ -75,9 +67,7 @@ $(document).ready(function(){
         //randomizing position of bubbles and appending them to the body
         bub.css("left", Math.random() * window.innerWidth);
         $('body').append(bub);
-        bub.css(`animation`, `bubFloat ${Math.floor(Math.random() * 300)}s infinite`);
 
-        //randomizing animation speed of bubbles and appending them to the body
         //change bubble to appear popped when clicked and add Pop sound effect
         bub.on('click',function(){
         // popSound.play();
@@ -85,10 +75,12 @@ $(document).ready(function(){
         score = bubbleCount * 10;
         bub.addClass('splash');
 
+
+
         // Delay appearance of Splash image to ensure bubble is clicked and bubble class removed first.
         setTimeout(function(){
             bub.removeClass('bubble splash')
-        },200); //chg'd from 200ms
+        },100); //chg'd from 200ms
 
 
         //sets a timing interval of 1 second, counting down from 60 using a loop, to display a game timer
