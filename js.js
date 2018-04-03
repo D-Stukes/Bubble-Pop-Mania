@@ -13,27 +13,30 @@ $(document).ready(function(){
         // $('.scoreTally').hide();
     $('.gameStart').hide();
     $('.gameEnd').hide();
+    $('.replay').hide();
+    $('.youLost').hide();
+    $('.congrats').hide();
     playNow.on('click', function(){
 
         //sending Player's name to the div Player1 to display
-      $('.player1').text(playerName.val());
+    $('.player1').text(playerName.val());
         // console.log(playerName.val())
-      $('.gameIntro').hide();
-      $('.gameEnd').hide();
-      $('.scoreTally').show();
-      $('.gameStart').show();
-      $('.scoreTally').text('BUBBLES POPPED:_______' + '    CURRENT SCORE:______');
+    $('.gameIntro').hide();
+    $('.gameEnd').hide();
+    $('.scoreTally').show();
+    $('.gameStart').show();
+    $('.scoreTally').text('BUBBLES POPPED:_______' + '    YOUR SCORE:______');
 
         //removing intro background, adding background scene of first level to the body - "newbody"
-      newBody.addClass('bodyBub');
-        setTimeout(function(){newBody.removeClass('bodyStart')},500);
+    newBody.addClass('bodyBub');
+    setTimeout(function(){newBody.removeClass('bodyStart')},500);
 
         // calling function to create 100 bubbles
+    blowNewBubbles();
+        for(let y = 1; y <= 100; y++){
         blowNewBubbles();
-            for(let y = 1; y <= 100; y++){
-            blowNewBubbles();
-            }
-
+        }
+        let i = 60;
         let time = setInterval(function() {
             // selects timer div and adds value of i, which will count down to 0.
           $('.timer').text("GAME TIMER: " + i);
@@ -44,11 +47,12 @@ $(document).ready(function(){
             //removing first level background, adding background scene of end  to the body - "newbody"
             newBody.addClass('bodyEndFirstGame');
             setTimeout(function(){newBody.removeClass('bodybub')},500);
-            // $('.gameEnd').show();
-            $('.congrats').show();
+            $('.gameEnd').show();
             $('.youLost').hide();
+            $('.congrats').show();
             $('.replay').show();
             clearInterval(time);
+
           } else if( (i < 0) && (score < 200) ) {
             console.log('game over you lost')
             //removing first level background, adding background scene of end  to the body - "newbody"
@@ -75,7 +79,7 @@ $(document).ready(function(){
         //randomizing position of bubbles and appending them to the body
         bub.css("left", Math.random() * window.innerWidth);
         $('body').append(bub);
-        bub.css(`animation`, `bubFloat ${Math.floor(Math.random() * 300)}s infinite`);
+        bub.css(`animation`, `bubFloat ${Math.floor(Math.random() * 250)}s infinite`);
 
         //randomizing animation speed of bubbles and appending them to the body
         //change bubble to appear popped when clicked and add Pop sound effect
@@ -94,7 +98,7 @@ $(document).ready(function(){
         //sets a timing interval of 1 second, counting down from 60 using a loop, to display a game timer
 
             //displays BubbleCount, and Score
-        $('.scoreTally').text('BUBBLES POPPED:____' + bubbleCount + ' YOUR SCORE:____' + score);
+        $('.scoreTally').text('BUBBLES POPPED:____      ' + bubbleCount + '   YOUR SCORE:____  ' + score);
 
             // I wanted more bubbles. The following 3 lines are about that. Will revisit as post MVP
             // let bub2 = $('<div>');
